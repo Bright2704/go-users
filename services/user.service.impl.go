@@ -43,7 +43,7 @@ func (u *UserServiceImpl) GetAll() ([]*models.User, error) {
 	cursor, err := u.usercollection.Find(u.ctx, bson.D{{}})
 	if err != nil {
 		return nil, err
-	}
+	}      
 	for cursor.Next(u.ctx) {
 		var user models.User
 		err := cursor.Decode(&user)
