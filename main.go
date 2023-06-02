@@ -30,7 +30,7 @@ var (
 func init() {
 	ctx = context.TODO()
 
-	mongoconn := options.Client().ApplyURI("mongodb://localhost:27017")
+	mongoconn := options.Client().ApplyURI("mongodb://202.151.177.207:27017")
 	mongoclient, err = mongo.Connect(ctx, mongoconn)
 	if err != nil {
 		log.Fatal("error while connecting with mongo", err)
@@ -42,7 +42,7 @@ func init() {
 
 	fmt.Println("mongo connection established")
 
-	userc = mongoclient.Database("userdb").Collection("users")
+	userc = mongoclient.Database("battery").Collection("users")
 	us = services.NewUserService(userc, ctx)
 	uc = controllers.New(us)
 	server = gin.Default()
